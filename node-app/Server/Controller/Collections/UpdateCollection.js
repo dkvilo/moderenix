@@ -8,12 +8,12 @@ const {
 const UpdateCollection = (req, res) => {
 
     const REQUEST_BODY = {
-        title : req.body.title,
-        icon : req.body.icon,
-        description : req.body.description,
-        isPrivate : req.body.isPrivate,
-        hasBranch : req.body.hasBranch,
-        hasTags: req.body.hasTags
+      title : req.body.title,
+      icon : req.body.icon,
+      description : req.body.description,
+      isPrivate : req.body.isPrivate,
+      hasBranch : req.body.hasBranch,
+      hasTags: req.body.hasTags
     };
 
     if (REQUEST_BODY.hasBranch){
@@ -55,7 +55,7 @@ const UpdateCollection = (req, res) => {
               .catch((err) => res.send(err));
             return;
           } else {
-            res.send({success: false, message: 'Unable to uptade Collection, need to have owner permission'})
+            res.send({success: false, message: 'Unable to update Collection, need to have owner permission'})
           }
         })
         .catch((err) => {
