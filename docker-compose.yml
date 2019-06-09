@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  node-app:
+    restart: always
+    build: ./node-app
+    env_file:
+      - .env
+    volumes:
+      - ./node-app:/usr/src/app
+    ports:
+      - "3000-3005:80"
+    links:
+      - redis
+      - mongo
+    depends_on:
+      - mongo
+  redis:
+    build: ./redis
+    container_name: cache
+    ports:
+      - "6374-6379:6379"
+  mongo:
+    build: ./mongo
+    ports:
+      - "27012-27017:27017"
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - node-app
+
+    
