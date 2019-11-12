@@ -1,4 +1,4 @@
-FROM mongo:3.4.20
+FROM mongo:3.6.14
 
 COPY mongodb.conf /etc/
 

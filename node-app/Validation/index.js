@@ -1,15 +1,23 @@
-const Joi = require('@hapi/joi');
+const { check } = require("express-validator/check");
+const BasicFormatValidation = require("./Formatter");
 
-const Auth = {
-  body: {
-    username: Joi.string().email().required(),
-    password: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
+function body(actionType) {
+  switch (actionType) {
+    /*
+     * Create Message Validation
+     */
+    case "CREATE_MESSAGE": {
+      return [
+        check("content")
+          .not()
+          .isEmpty()
+          .withMessage("Message `content` is required")
+      ];
+    }
   }
-};
-
-const Register = {};
+}
 
 module.exports = {
-  Auth,
-  Register
-}
+  body,
+  BasicFormatValidation
+};
