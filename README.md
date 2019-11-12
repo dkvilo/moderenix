@@ -24,6 +24,7 @@ By default scaling limit is 5 (but you can increase anytime)
  - redis:  6374-6379
  - mongo: 27012-27017
  - nginx: 80
+ - varnish: 80
 
 
 # Example
